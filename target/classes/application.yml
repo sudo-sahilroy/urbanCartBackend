@@ -1,0 +1,38 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc.lob.non_contextual_creation: true
+    show-sql: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+server:
+  port: 8080
+
+security:
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration-ms: 3600000
+    refresh-expiration-ms: 604800000
+
+logging:
+  level:
+    org.springframework.security: INFO
+
+swagger:
+  enabled: true
+
+gemini:
+  api:
+    key: ${GEMINI_API_KEY}
+    model: gemini-2.5-flash

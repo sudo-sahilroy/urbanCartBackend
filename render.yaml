@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: urbancart-springboot
+    env: java
+    buildCommand: ./mvnw clean package
+    startCommand: java -jar target/*.jar
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: DATABASE_URL
+        value: <set-in-render-dashboard>
+      - key: DATABASE_USERNAME
+        value: <set-in-render-dashboard>
+      - key: DATABASE_PASSWORD
+        value: <set-in-render-dashboard>
+      - key: GEMINI_API_KEY
+        value: <set-in-render-dashboard>
+      - key: JWT_SECRET
+        value: <set-in-render-dashboard>
+    plan: starter
+    autoDeploy: true
