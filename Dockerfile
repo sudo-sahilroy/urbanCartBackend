@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 # Build stage
 FROM maven:3.9-eclipse-temurin-21-alpine AS build
 WORKDIR /app
@@ -19,7 +20,7 @@ RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
 
 # Copy the jar from build stage
-COPY --from=build /app/target/*.jar app.jar
+COPY --from=build /app/target/urbancart-backend-1.0.0.jar app.jar
 
 # Expose port
 EXPOSE 8080
