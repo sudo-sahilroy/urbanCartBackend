@@ -4,22 +4,18 @@ services:
     runtime: docker
     dockerfilePath: ./Dockerfile
     dockerContext: .
-    region: oregon
-    plan: starter
-    autoDeploy: true
-    healthCheckPath: /actuator/health
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
       - key: DATABASE_URL
-        sync: false
+        value: <set-in-render-dashboard>
       - key: DATABASE_USERNAME
-        sync: false
+        value: <set-in-render-dashboard>
       - key: DATABASE_PASSWORD
-        sync: false
+        value: <set-in-render-dashboard>
       - key: GEMINI_API_KEY
-        sync: false
+        value: <set-in-render-dashboard>
       - key: JWT_SECRET
-        sync: false
-      - key: JAVA_TOOL_OPTIONS
-        value: "-XX:MaxRAMPercentage=75.0"
+        value: <set-in-render-dashboard>
+    plan: starter
+    autoDeploy: true
