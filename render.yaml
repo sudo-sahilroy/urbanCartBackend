@@ -1,21 +1,25 @@
 services:
   - type: web
     name: urbancart-springboot
-    env: java
-    buildCommand: ./mvnw clean package
-    startCommand: java -jar target/*.jar
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    region: oregon
+    plan: starter
+    autoDeploy: true
+    healthCheckPath: /actuator/health
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
       - key: DATABASE_URL
-        value: <set-in-render-dashboard>
+        sync: false
       - key: DATABASE_USERNAME
-        value: <set-in-render-dashboard>
+        sync: false
       - key: DATABASE_PASSWORD
-        value: <set-in-render-dashboard>
+        sync: false
       - key: GEMINI_API_KEY
-        value: <set-in-render-dashboard>
+        sync: false
       - key: JWT_SECRET
-        value: <set-in-render-dashboard>
-    plan: starter
-    autoDeploy: true
+        sync: false
+      - key: JAVA_TOOL_OPTIONS
+        value: "-XX:MaxRAMPercentage=75.0"
