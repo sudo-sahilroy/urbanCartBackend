@@ -75,7 +75,7 @@ public class SecurityConfig {
                 "http://localhost:4200",
                 "http://127.0.0.1:4200",
                 "http://localhost:3000",
-                "https://urban-cart-7n0djuf8f-sudo-sahilroys-projects.vercel.app"
+                "https://urban-cart-ui.vercel.app"
         ));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         config.setAllowedHeaders(List.of("Authorization", "Content-Type", "Accept", "X-Requested-With"));
